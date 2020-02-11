@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Box Critters</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+<!-- Facebook Card -->
+<meta property="og:title" content="Box Critters" />
+<meta property="og:url" content="https://boxcritters.com" />
+<meta property="og:type" content="website" />
+<meta property="og:description" content="Box Critters is a New Virtual World by RocketSnail! The idea is to create new world, inspired by Club Penguin. My goal is to make this world widely accessible for browser, mobile and desktop." />
+<meta property="og:image" content="http://boxcritters.com/images/BoxCritters_400x400.jpg" />
+<meta property="og:image:width" content="400" />
+<meta property="og:image:height" content="400" />
+
+<!-- Twitter Card -->
+<meta name="twitter:title" content="Box Critters">
+<meta name="twitter:description" content="Box Critters is a New Virtual World by RocketSnail! The idea is to create new world, inspired by Club Penguin.">
+<meta name="twitter:image" content="http://boxcritters.com/images/BoxCritters_400x400.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@boxcritters">
+
+<!-- Facebook Pixel Code -->
+<script>
+    ! function(f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function() {
+            n.callMethod ?
+                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = '2.0';
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '311104706251822');
+    fbq('track', 'PageView');
+
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=124769524847795&ev=PageView&noscript=1" /></noscript>
+<!-- End Facebook Pixel Code -->
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-133725203-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-133725203-1');
+
+</script>
+<!-- End -->
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <style>
+        .hide {
+            display: none
+        }
+
+    </style>
+
+    <link href="styles/main.css" rel="stylesheet">
+
+    <!-- PlayFab -->
+    <script type="text/javascript" src="https://download.playfab.com/PlayFabClientApi.js"></script>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col col-sm-10 col-md-8 col-lg-6">
+
+                <form class="form form-login" novalidate>
+
+                    <h1 class="h3 mb-3 font-weight-normal">Box Critters Login</h1>
+
+                    <div>
+                        <img src="images/BoxCritters_400x400.jpg" width="100" height="100">
+                    </div>
+
+                    <div class="form-error alert alert-danger hide"></div>
+
+                    <div class="form-group login-username">
+                        <input type="username" id="username" class="form-control" placeholder="Username or email" required autofocus autocomplete="username">
+                        <div class="invalid-feedback">Invalid username or email</div>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="password" class="form-control" placeholder="Password" required autocomplete="current-password">
+                        <div class="invalid-feedback">Password must be between 6 and 100 characters</div>
+                    </div>
+                    <div class="form-group">
+                        <button id="loginButton" class="btn btn-lg btn-primary btn-block">Sign in</button>
+                        <a href="join/index.html" class="btn btn-lg btn-secondary btn-block">Create an Account</a>
+                        <a href="lost/index.html" class="btn btn-link btn-block">Lost your password</a>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="about container mt-2">
+        <div class="row justify-content-center">
+            <div class="col-sm-8 col-md-6">
+                <div class="card mt-2">
+                    <div class="card-body">
+                        <p class="card-text">Box Critters is a New Virtual World by <a href="https://rocketsnail.com/" target="_blank">RocketSnail</a>! The idea is to create new world, inspired by Club Penguin. My goal is to make this world widely accessible for browser, mobile and desktop.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer container mb-4">
+    <div class="row justify-content-center">
+        <div class="col-8 col-md-6">
+            <p class="mt-5 mb-3 text-muted text-center">Created by <a href="https://rocketsnail.com" target=”_blank”>RocketSnail</a> and powered by the amazing team at <a href="https://screenzilla.com" target=”_blank”>Screenzilla Entertainment</a></p>
+            <p class="mt-3 mb-3 text-muted text-center small"><a href="https://screenzilla.com/terms-conditions/" target=”_blank”>Terms</a> | <a href="https://screenzilla.com/privacy-policy/" target=”_blank”>Privacy</a></p>
+            <p class="mt-1 mb-3 text-muted text-center small">&copy;2019 RocketSnail Games Ltd. Box Critters is a trademark of RocketSnail Games Ltd</p>
+        </div>
+    </div>
+</div>
+
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script src="scripts/forms.js"></script>
+    <script>
+        $("form").submit(function(e) {
+
+            e.preventDefault();
+
+            var username = $('#username').val().trim();
+            var password = $('#password').val();
+
+            var isValid = true;
+            var isEmail = false;
+
+            // Remove Spaces
+            username = username.replace(/\s+/g, '');
+
+            // Validate Form
+            if (password.length < 6 || password.length > 100) {
+                $('#password').addClass('is-invalid').focus();
+                $('.form-error').text('Invalid password');
+                isValid = false;
+            } else {
+                $('#password').removeClass('is-invalid');
+            }
+
+            if (username.includes('@')) {
+                if (!checkEmail(username)) {
+                    $('#username').addClass('is-invalid').focus();
+                    $('.form-error').text('Invalid email address').show();
+                    isValid = false;
+                } else {
+                    $('#username').removeClass('is-invalid');
+                    isEmail = true;
+                }
+            } else {
+                if (!checkUsername(username)) {
+                    $('#username').addClass('is-invalid').focus();
+                    $('.form-error').text('Invalid username').show();
+                    isValid = false;
+                } else {
+                    $('#username').removeClass('is-invalid');
+                }
+            }
+
+            if (isValid) {
+                if (isEmail) {
+                    PlayFabClientSDK.LoginWithEmailAddress({
+                        TitleId: '5417',
+                        Email: username,
+                        Password: password
+                    }, handleLogin);
+                } else {
+                    PlayFabClientSDK.LoginWithPlayFab({
+                        TitleId: '5417',
+                        Username: username,
+                        Password: password
+                    }, handleLogin);
+                }
+            }
+
+        });
+
+        function handleLogin(result, error) {
+            if (error) {
+                console.error(error);
+                $('.form-error').text(error.errorMessage).show();
+            } else if (result) {
+                console.log(result);
+                sessionStorage.setItem("playerId", result.data.PlayFabId);
+                sessionStorage.setItem("sessionTicket", result.data.SessionTicket);
+                sessionStorage.setItem("isNewPlayer", result.data.NewlyCreated);
+                document.location.href = '/play/index.html';
+            } else {
+                $('.alert').text('Grub! Something went wrong');
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

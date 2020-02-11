@@ -1,0 +1,21 @@
+{
+  "name": "boxcritters-coder-pack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "setup": "node runtime/setup.js",
+    "client": "node runtime/client.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "extract-zip": "^1.6.7",
+    "fs-extra": "^8.1.0",
+    "http-proxy-middleware": "^0.20.0",
+    "tn-webserver": "^1.0.3"
+  },
+  "devDependencies": {}
+}
