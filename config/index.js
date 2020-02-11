@@ -1,3 +1,5 @@
 module.exports = {
-	CONFIG:require("./bcp")
-}
+	CONFIG:require("./bcp"),
+	VERSION: require("./versions"),
+	MODS: require('./mods')
+};
