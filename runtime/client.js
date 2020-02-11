@@ -30,7 +30,7 @@ function StartTPServer() {
 	app.use(function (req, res, next) {
 		res.redirect("http://boxcritters.com" + req.url);
 	});
-	//Webserver(app, {}, BCP.CONFIG.ports.tp);
+	Webserver(app, {}, BCP.CONFIG.ports.tp);
 }
 
 console.clear();
