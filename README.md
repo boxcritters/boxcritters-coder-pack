@@ -1,5 +1,8 @@
 # BoxCritters Coder Pack
 
+# Prerequisites:
+Install Node.js
+> https://nodejs.org/en/download/
 # Usage
 ## Setup
 To setup envirement run `setup.bat`.
