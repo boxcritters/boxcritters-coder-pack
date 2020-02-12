@@ -11,7 +11,7 @@ Put mod code in `src`
 create a `modinfo.js` file in your mod folder
 ```javascript
 module.exports = {
-	name:"Tumble Mod",
+	name:"Mod Name",
 	version:"0.1",
 	main:"main.js"
 }
