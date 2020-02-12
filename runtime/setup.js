@@ -1,13 +1,29 @@
 const BCP = require('../config');
+const UTIL = require('./util');
 
 const fs = require('fs-extra')
 const http = require('http');
-var extract = require('extract-zip');
+const extract = require('extract-zip');
 const path = require("path");
 
 
-function setupTmp() {
-	fs.mkdirSync(BCP.CONFIG.dir.temp, { recursive: true });
+function setupFolders() {
+	UTIL.mkdir(BCP.CONFIG.dir.temp);
+	UTIL.mkdir(BCP.CONFIG.dir.www);
+}
+
+function createModInfo({name,version,main,onefile}) {
+	var dir = path.join(BCP.CONFIG.dir.src,name);
+	UTIL.mkdir(dir);
+	let modinfo = new Uint8Array(Buffer.from(
+`module.exports = {
+	name:"${name}",
+	version:"${version}",
+	main:"${main}",${onefile?"\n	onefile:true":''}
+}`
+		));
+	fs.writeFile(path.join(dir,'modinfo.js'),modinfo, (err) => {if (err) throw err;});
+
 }
 
 function printBytes(b) {
@@ -25,7 +41,7 @@ function printBytes(b) {
 	}
 	return b + " bytes";
 }
-
+//wait is the mod api server  down
 function downloadBC() {
 	let bcZip = BCP.CONFIG.dir.temp + "/bc.zip";
 	console.log("Downloading BoxCritters Files...");
@@ -63,7 +79,6 @@ function setupWWW() {
 	let wwwDir = path.join(process.cwd(),BCP.CONFIG.dir.www);
 
 	console.log("Setting Up WWW folder");
-	fs.mkdirSync(BCP.CONFIG.dir.www, { recursive: true });
 	fs.copy(bcAssets,wwwDir,function(err) {
 		if(err) {
 
@@ -78,7 +93,11 @@ function setupSrc() {
 	BCP.MODS.forEach(mod=>{
 		console.log(`> Setting up ${mod}`)
 		let loc = path.join(BCP.CONFIG.dir.src,mod);
-		fs.mkdirSync(loc, { recursive: true });
+		createModInfo({
+			name:mod,
+			version:"0.1",
+			main:"main.js"
+		});
 	});
 	var bcSrcDir = path.join(BCP.CONFIG.dir.src,'boxcritters');
 	fs.copy(bcLib,bcSrcDir,function(err) {
@@ -104,6 +123,12 @@ function setupSrc() {
 }`
 				));
 			fs.writeFile(path.join(bcSrcDir,'modinfo.js'),modinfo, (err) => {if (err) throw err;});
+			createModInfo({
+				name:"boxcritters",
+				version:version,
+				main:`client${version}.min.js`,
+				onefile:true
+			})
 		})
 	})
 }
@@ -120,7 +145,7 @@ async function setupBC(zipNotExist) {
 }
 
 console.clear();
-setupTmp();
+setupFolders();
 fs.access(BCP.CONFIG.dir.temp + "/bc.zip", fs.constants.F_OK, (err) => {
 	//console.log(`${BCP.CONFIG.dir.temp + "/bc.zip"} ${err ? 'does not exist' : 'exists'}`);
 	setupBC(err);
