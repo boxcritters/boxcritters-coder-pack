@@ -1,4 +1,5 @@
-module.exports = {
-	boxcritters: 'lib',
-	modname:'modname'
-}
+module.exports = [
+	'boxcritters',
+	'bcp',
+	'samplemod'
+]

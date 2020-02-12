@@ -5,6 +5,7 @@ Install Node.js
 > https://nodejs.org/en/download/
 # Usage
 ## Setup
+Edit 
 To setup envirement run `setup.bat`.
 ## Development
 Put mod code in `src` folder
@@ -12,7 +13,7 @@ Put mod code in `src` folder
 To test, run `client.bat` and go to localhost:3000
 
 ## Build
-Steps coming soon
+To build mod, run `build.bat`.
 
 # Contribution
 Most code for BCP lives in `runtime` folder.

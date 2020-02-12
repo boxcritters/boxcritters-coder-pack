@@ -1,4 +1,4 @@
 @echo off
-call npm i
-call npm run setup
+call npm install
+npm run setup
 pause

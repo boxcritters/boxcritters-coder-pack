@@ -1,7 +1,41 @@
 const BCP = require('../config');
 
 const fs = require('fs-extra')
-const http = require('http');
-var extract = require('extract-zip');
 const path = require("path");
+const browserify = require('browserify');
 
+var bcInfo = (function () {
+	var bcDir = path.join(BCP.CONFIG.dir.src,'boxcritters');
+	var bcInfo = require(path.join(process.cwd(), bcDir, 'modinfo.js'));
+	return bcInfo;
+})();
+
+var clientLoc = path.join(process.cwd(), BCP.CONFIG.dir.www, 'lib', bcInfo.main);
+var clientStream = fs.createWriteStream(clientLoc, { flags: 'a' });
+
+fs.writeFile(clientLoc, '', function () { })
+
+BCP.MODS.forEach(mod=>{
+	var dir = path.join(process.cwd(), BCP.CONFIG.dir.src, mod);
+	var buildDir = path.join(process.cwd(), BCP.CONFIG.dir.build, mod);
+
+	var info = require(path.join(dir, 'modinfo.js'));
+
+	var mainFile = path.join(dir, info.main);
+	var buildFile = path.join(buildDir, mod + ".js");
+	var buildFileStream = fs.createWriteStream(buildFile);
+
+	console.log(info);
+	fs.mkdirSync(buildDir, { recursive: true });
+
+	console.log(buildFile);
+	var s;
+	if (info.onefile) {
+		s = fs.createReadStream(mainFile);
+	} else {
+		let b = browserify().add(mainFile)
+		s = b.bundle();
+	}
+	s.pipe(buildFileStream,{end:false});
+	s.pipe(clientStream,{end:false});
+});

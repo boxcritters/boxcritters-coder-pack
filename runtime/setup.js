@@ -10,6 +10,22 @@ function setupTmp() {
 	fs.mkdirSync(BCP.CONFIG.dir.temp, { recursive: true });
 }
 
+function printBytes(b) {
+	if(b>1024*1024*1024*1024){
+		return Math.round(100*b/(1024*1024*1024*1024))/100 + " TB      ";
+	}
+	if(b>1024*1024*1024){
+		return Math.round(100*b/(1024*1024*1024))/100 + " GB      ";
+	}
+	if(b>1024*1024){
+		return Math.round(100*b/(1024*1024))/100 + " MB      ";
+	}
+	if(b>1024){
+		return Math.round(100*b/1024)/100 + " KB      ";
+	}
+	return b + " bytes";
+}
+
 function downloadBC() {
 	let bcZip = BCP.CONFIG.dir.temp + "/bc.zip";
 	console.log("Downloading BoxCritters Files...");
@@ -19,7 +35,7 @@ function downloadBC() {
 			response.on('data', function (data) {
 				fs.appendFileSync(bcZip, data);
 				i += data.length;
-				process.stdout.write("> " + i + " bytes" + /*isWin ?*/ "\033[0G"/*: "\r"*/);
+				process.stdout.write("> " + printBytes(i) + /*isWin ?*/ "\033[0G"/*: "\r"*/);
 			});
 			response.on('end', function () {
 				resolve();
@@ -59,20 +75,37 @@ function setupSrc() {
 	let bcLib = path.join(process.cwd(),BCP.CONFIG.dir.temp, "bc","boxcritters.com","lib");
 
 	console.log("Setting Up Src folder");
-	Object.values(BCP.MODS).forEach((dir,i)=>{
-		console.log(`> Setting up ${Object.keys(BCP.MODS)[i]}`)
-		let loc = path.join(BCP.CONFIG.dir.src,dir);
+	BCP.MODS.forEach(mod=>{
+		console.log(`> Setting up ${mod}`)
+		let loc = path.join(BCP.CONFIG.dir.src,mod);
 		fs.mkdirSync(loc, { recursive: true });
 	});
-	if(BCP.MODS.boxcritters) {
-		var bcSrcDir = path.join(BCP.CONFIG.dir.src,BCP.MODS.boxcritters);
-		fs.copy(bcLib,bcSrcDir,function(err) {
-			if(err) {
-	
-			}
-		});	
-		
-	}
+	var bcSrcDir = path.join(BCP.CONFIG.dir.src,'boxcritters');
+	fs.copy(bcLib,bcSrcDir,function(err) {
+		if(err) {
+
+		}
+	});	
+
+	http.get(BCP.CONFIG.urls.versionInfo, function (response) {
+		var body = '';
+		response.on('data',function(chunk){
+			body+=chunk;
+		});
+		response.on('end',function() {
+			var data = JSON.parse(body);
+			var version = data.name;
+			let modinfo = new Uint8Array(Buffer.from(
+`module.exports = {
+	name:"boxcritters",
+	version:"${version}",
+	main:"client${version}.min.js",
+	onefile:true
+}`
+				));
+			fs.writeFile(path.join(bcSrcDir,'modinfo.js'),modinfo, (err) => {if (err) throw err;});
+		})
+	})
 }
 
 
