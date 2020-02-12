@@ -5,14 +5,11 @@ Install Node.js
 > https://nodejs.org/en/download/
 # Usage
 ## Setup
-Edit 
+Set mod name in `config/mods.js`
 To setup envirement run `setup.bat`.
 ## Development
-Set mod name in `config/mods.js`
 Put mod code in `src` folder
-
 To test, run `client.bat` and go to localhost:3000/play
-
 ## Build
 To build mod for distribution and **testing**, run `build.bat`.
 
