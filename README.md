@@ -10,7 +10,7 @@ and then run `setup.bat`.
 The Box critters files should download and start life in the `www` folder.
 
 ## 2. Development
-Then you go to the foldrer for you mod in the `src` folder and start developing
+Then you go to the folder for you mod in the `src` folder and start developing. **By default mods are initialised in a file that you have to create called `main.js`, this can be changed in `modinfo.js`**
  > Tip: functions like requre also work so feel free to have many files in your mod and use all the npm modules you want
  
  ## 3. Building
