@@ -9,7 +9,7 @@ module.exports = {
 		src: './src',
 		build: './build'
 	},
-	urls:{
+	urls: {
 		bcFiles:"http://bc-mod-api.herokuapp.com/getassets",
 		versionInfo:"http://bc-mod-api.herokuapp.com/versions/latest"
 	},

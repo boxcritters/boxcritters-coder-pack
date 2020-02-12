@@ -35,4 +35,5 @@ jspm_packages/
 #BCP
 temp
 www
-src/lib
+src/boxcritters
+build
