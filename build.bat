@@ -1,3 +1,3 @@
 @echo off
-call npm build
+call npm run build
 pause
