@@ -12,7 +12,7 @@ function setupFolders() {
 	UTIL.mkdir(BCP.CONFIG.dir.www);
 }
 
-function createModInfo({name,version,main,onefile}) {
+function createModInfo({name,version,main,onefile},force) {
 	var dir = path.join(BCP.CONFIG.dir.src,name);
 	UTIL.mkdir(dir);
 	let modinfo = new Uint8Array(Buffer.from(
@@ -22,6 +22,7 @@ function createModInfo({name,version,main,onefile}) {
 	main:"${main}",${onefile?"\n	onefile:true":''}
 }`
 		));
+	if(!force && fs.existsSync(path.join(dir,'modinfo.js')))return;
 	fs.writeFile(path.join(dir,'modinfo.js'),modinfo, (err) => {if (err) throw err;});
 
 }
@@ -114,15 +115,6 @@ function setupSrc() {
 		response.on('end',function() {
 			var data = JSON.parse(body);
 			var version = data.name;
-			let modinfo = new Uint8Array(Buffer.from(
-`module.exports = {
-	name:"boxcritters",
-	version:"${version}",
-	main:"client${version}.min.js",
-	onefile:true
-}`
-				));
-			fs.writeFile(path.join(bcSrcDir,'modinfo.js'),modinfo, (err) => {if (err) throw err;});
 			createModInfo({
 				name:"boxcritters",
 				version:version,
