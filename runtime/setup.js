@@ -120,7 +120,7 @@ function setupSrc() {
 				version:version,
 				main:`client${version}.min.js`,
 				onefile:true
-			})
+			},true)
 		})
 	})
 }
