@@ -4,6 +4,7 @@ const UTIL = require('./util');
 const fs = require('fs-extra')
 const path = require("path");
 const browserify = require('browserify');
+const CombinedStream = require('combined-stream');
 
 var bcInfo = (function () {
 	var bcDir = path.join(BCP.CONFIG.dir.src,'boxcritters');
@@ -13,6 +14,7 @@ var bcInfo = (function () {
 
 var clientLoc = path.join(BCP.CONFIG.dir.www, 'lib', bcInfo.main);
 var clientStream = fs.createWriteStream(clientLoc, { flags: 'a' });
+var modsStream = CombinedStream.create();
 
 fs.writeFile(clientLoc, '', function () { })
 
@@ -38,5 +40,7 @@ BCP.MODS.forEach(mod=>{
 		s = b.bundle();
 	}
 	s.pipe(buildFileStream,{end:false});
-	s.pipe(clientStream,{end:false});
+	modsStream.append(s);
+	if(i==BCP.MODS.length-1)
+		modsStream.pipe(clientStream,{end:false});
 });

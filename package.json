@@ -13,12 +13,11 @@
   "license": "ISC",
   "dependencies": {
     "browserify": "^16.5.0",
+    "combined-stream": "^1.0.8",
     "express": "^4.17.1",
     "extract-zip": "^1.6.7",
     "fs-extra": "^8.1.0",
     "tn-webserver": "^1.0.3"
   },
-  "devDependencies": {
-    "gulp": "^4.0.2"
-  }
+  "devDependencies": {}
 }
