@@ -18,7 +18,7 @@ var modsStream = CombinedStream.create();
 
 fs.writeFile(clientLoc, '', function () { })
 
-BCP.MODS.forEach(mod=>{
+BCP.MODS.forEach((mod,i)=>{
 	var dir = path.join(BCP.CONFIG.dir.src, mod);
 	var buildDir = path.join(BCP.CONFIG.dir.build, mod);
 
